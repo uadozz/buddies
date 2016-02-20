@@ -1,6 +1,5 @@
 # Buddies
 
-Get Involved In Sports and Activities With Your Buddies.
-
-#Hackaton Project
-
+Get involved in sports and other activities with your buddies.
+Search for events nearby. Organize your team and start a competition.
+ #Hackaton Project

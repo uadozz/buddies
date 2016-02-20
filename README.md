@@ -1,2 +1,6 @@
-# buddies
-#Hackaton projct: Get Involved In Sports and Activities With Your Buddies
+# Buddies
+
+Get Involved In Sports and Activities With Your Buddies.
+
+#Hackaton Project
+

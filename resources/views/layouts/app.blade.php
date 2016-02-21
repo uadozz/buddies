@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
+    {{-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags --}}
+    <title>@yield('title') | Buddies</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -14,6 +14,13 @@
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
     <style>
         body {
@@ -24,6 +31,7 @@
             margin-right: 6px;
         }
     </style>
+    @yield('head')
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default">
@@ -47,7 +55,21 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+							Events <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="{{ route('events.index') }}">Events</a></li>
+							<li><a href="{{ route('events.create') }}">Create New</a></li>
+							@if (!empty($event->id))
+								<li><a href="{!! route('events.edit', $event->id) !!}">Edit</a></li>
+								<li><a class="danger" href="#" data-toggle="modal" data-target="#confirmModal">Delete</a></li>
+							@endif
+						</ul>
+                    </li>
+                    @yield('navigation')
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -80,5 +102,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    @yield('js')
 </body>
 </html>

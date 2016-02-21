@@ -24,7 +24,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        //
+        // Lot IoC binding
+        //$router->bind('events', function($id) { return \App\Event::published()->findOrFail($id); });
+
+        // Event form-model binding
+        $router->model('events', 'App\Event');
 
         parent::boot($router);
     }

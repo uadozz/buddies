@@ -27,11 +27,16 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    // Event resource
+	Route::resource('events', 'EventsController');
 });
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+    //Route::get('/home', 'HomeController@index');
+    Route::get('/home', function() {
+		//return redirect('EventsController@index');
+		return redirect(route('events.index'));
+	});
 });

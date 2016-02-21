@@ -11,7 +11,9 @@ class Player extends Model
      *
      * @var array
      */
-    protected $fillable = [];
-    
-    
+    protected $fillable = [
+		'experience',
+		'level',
+    ];
+
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Location extends Model
+class Participant extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,8 +12,6 @@ class Location extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'region_id',
+		'event_id',
     ];
-
 }

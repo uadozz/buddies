@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActivitiesTable extends Migration
+class CreateRegionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateActivitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('activities', function (Blueprint $table) {
+        Schema::create('regions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 128)->index();
-            $table->text('description');
+            $table->string('country', 128)->index();
+            $table->string('country_code', 3)->index();
             $table->timestamps();
-            // TODO: has many Location
         });
     }
 
@@ -28,6 +28,6 @@ class CreateActivitiesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('activities');
+        Schema::drop('regions');
     }
 }

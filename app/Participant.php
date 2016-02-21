@@ -14,4 +14,26 @@ class Participant extends Model
     protected $fillable = [
 		'event_id',
     ];
+    
+    
+    /**
+     * Returns participant event.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function event()
+    {
+        return $this->belongsTo('App\Event');
+    }
+    
+    
+    /**
+     * Returns participant user.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

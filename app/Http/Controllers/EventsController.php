@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Event;
 use App\Location;
+use Auth;
 
 class EventsController extends Controller
 {
@@ -18,7 +19,7 @@ class EventsController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
 
@@ -57,8 +58,7 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        Event::create($request->all());
-        
+        Auth::user()->events()->create($request->all());
         return redirect(route('events.index'));
     }
 

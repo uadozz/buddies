@@ -67,6 +67,17 @@ class Event extends Model
     
     
     /**
+     * Returns all participants of the event.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function participants()
+    {
+        return $this->hasMany('App\Participant');
+    }
+    
+    
+    /**
      * Parses Event staring date.
      */
     public function setDateStartAttribute($date)

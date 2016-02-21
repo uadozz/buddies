@@ -26,4 +26,18 @@ class Activity extends Model
     {
         return $this->hasMany('App\Location');
     }
+    
+    
+    /**
+     * Returns all events of the activity.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function events()
+    {
+        return $this->hasMany('App\Event');
+    }
+    
+    
+    // Has many players
 }

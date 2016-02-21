@@ -14,39 +14,39 @@ class ForeignKeys extends Migration
     {
         Schema::table('locations', function (Blueprint $table) {
             $table->foreign('region_id')
-                  ->reference('id')
+                  ->references('id')
                   ->on('regions');
         });
 		
         Schema::table('events', function (Blueprint $table) {
             $table->foreign('activity_id')
-                  ->reference('id')
+                  ->references('id')
                   ->on('activities');
 			$table->foreign('user_id')
-                  ->reference('id')
+                  ->references('id')
                   ->on('users');
             $table->foreign('location_id')
-                  ->reference('id')
+                  ->references('id')
                   ->on('locations');
         });
         
         Schema::table('participants', function (Blueprint $table) {
             $table->foreign('event_id')
-                  ->reference('id')
+                  ->references('id')
                   ->on('events')
                   ->onDelete('cascade'); // delete everything connected with an Event on Event delete.
             $table->foreign('user_id')
-                  ->reference('id')
+                  ->references('id')
                   ->on('users');
         });
         
         Schema::table('players', function (Blueprint $table) {
             $table->foreign('user_id')
-                  ->reference('id')
+                  ->references('id')
                   ->on('users')
                   ->onDelete('cascade'); // Delete Player on User deletion
             $table->foreign('activity_id')
-                  ->reference('id')
+                  ->references('id')
                   ->on('activities')
                   ->onDelete('cascade'); // Delete Player on Activity deletion
         });

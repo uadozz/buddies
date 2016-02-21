@@ -34,7 +34,7 @@ class Location extends Model
      * 
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function locations()
+    public function events()
     {
         return $this->hasMany('App\Event');
     }

@@ -17,4 +17,13 @@ class Region extends Model
         'country_code',
     ];
 
+    /**
+     * Returns all locations of the region.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function locations()
+    {
+        return $this->hasMany('App\Location');
+    }
 }

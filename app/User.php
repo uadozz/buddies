@@ -23,4 +23,37 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    
+    /**
+     * Returns all events that user owns (created).
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function events()
+    {
+        return $this->hasMany('App\Event');
+    }
+    
+    
+    /**
+     * Returns all participations in the events of the user.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function participations()
+    {
+        return $this->hasMany('App\Participant');
+    }
+    
+    
+    /**
+     * Returns all player instances of the user.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function players()
+    {
+        return $this->hasMany('App\Player');
+    }
 }

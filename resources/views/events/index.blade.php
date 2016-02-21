@@ -24,11 +24,11 @@
 					<h3><a href="{{ route('events.show', [$event->id]) }}">{{ $event->name }}</a></h3>
                     <dl class="col-sm-12 details inline">
                         <dt>Activity:</dt>
-                        <dd>{{ $event->activity_id }}</dd>
+                        <dd>{{ $event->activity->name }}</dd>
                         <dt>Location:</dt>
-                        <dd>{{ $event->location_id }}</dd>
+                        <dd>{{ $event->location->name }}</dd>
                         <dt>Region:</dt>
-                        <dd>Kyiv, Ukraine</dd>
+                        <dd>{{ $event->location->region->name }}, {{ $event->location->region->country }}</dd>
                         <dt>Event starts:</dt>
                         <dd>{{ $event->date_start->format('d.m.Y H:i') }}</dd>
                         <dt>Event ends:</dt>

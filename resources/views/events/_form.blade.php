@@ -4,9 +4,8 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('activity_id', 'Activity (id - FIXME!):') !!}
-            {{-- {!! Form::select('activity_id', null, ['class' => 'form-control', 'placeholder' => "Activity"]) !!} --}}
-            {!! Form::text('activity_id', null, ['class' => 'form-control', 'placeholder' => "Activity"]) !!}
+            {!! Form::label('activity_id', 'Activity:') !!}
+            {!! Form::select('activity_id', $activities, $event->activity_id, ['class' => 'form-control', 'placeholder' => "Activity"]) !!}
         </div>
 
         <div class="form-group">
@@ -25,9 +24,8 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('location_id', 'Location (id - FIXME!):') !!}
-            {{-- {!! Form::select('location_id', null, ['class' => 'form-control', 'placeholder' => "Event location"]) !!} --}}
-            {!! Form::text('location_id', null, ['class' => 'form-control', 'placeholder' => "Event location"]) !!}
+            {!! Form::label('location_id', 'Location:') !!}
+            {!! Form::select('location_id', $locations, $event->location_id, ['class' => 'form-control', 'placeholder' => "Event location"]) !!}
         </div>
 
         <div class="form-group">

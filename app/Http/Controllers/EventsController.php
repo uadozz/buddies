@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Event;
 use App\Location;
+use App\Activity;
 use Auth;
 
 class EventsController extends Controller
@@ -32,7 +33,6 @@ class EventsController extends Controller
     {
         //$events = Event::published()->get();
         $events = Event::all();
-
         return view('events.index', compact('events'));
     }
     
@@ -45,8 +45,8 @@ class EventsController extends Controller
     public function create()
     {
 		$locations = Location::lists('name', 'id');
-		
-        return view('events.create', compact('locations'));
+		$activities = Activity::lists('name', 'id');
+        return view('events.create', compact('locations', 'activities'));
     }
 
 
@@ -58,7 +58,8 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        Auth::user()->events()->create($request->all());
+        //Auth::user()->events()->create($request->all());
+        $request->user()->events()->create($request->all());
         return redirect(route('events.index'));
     }
 
@@ -83,7 +84,10 @@ class EventsController extends Controller
      */
     public function edit(Event $event)
     {
-        return view('events.edit', compact('event'));
+		$locations = Location::lists('name', 'id');
+		$activities = Activity::lists('name', 'id');
+		
+        return view('events.edit', compact('event', 'locations', 'activities'));
     }
     
     

@@ -8,12 +8,12 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {!! csrf_field() !!}
-
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+								{{-- Demo account for Hackathon judges --}}
+                                <input type="email" class="form-control" name="email" value="{{ old('email') ? old('email') : "demo@example.org" }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -27,7 +27,8 @@
                             <label class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
+								{{-- Demo account for Hackathon judges --}}
+                                <input type="password" class="form-control" name="password" value="demo">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">

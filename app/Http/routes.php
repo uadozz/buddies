@@ -27,6 +27,13 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
+	
+	// Auto-login using demo account (For #Hackathon judges)
+	Route::get('/demo', function() {
+		Auth::loginUsingId(3); // Log in using demo account (id = 3)
+		return redirect(url('/'));
+	});
+	
     // Event resource
 	Route::resource('events', 'EventsController');
 });
@@ -36,7 +43,7 @@ Route::group(['middleware' => 'web'], function () {
 
     //Route::get('/home', 'HomeController@index');
     Route::get('/home', function() {
-		//return redirect('EventsController@index');
-		return redirect(route('events.index'));
+		//return redirect(route('events.index')); // TODO: Won't work. Why?
+		return redirect(url('/events'));
 	});
 });

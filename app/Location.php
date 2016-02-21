@@ -13,7 +13,29 @@ class Location extends Model
      */
     protected $fillable = [
         'name',
+        'description',
         'region_id',
     ];
 
+
+    /**
+     * Returns region of the location.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function region()
+    {
+        return $this->belongsTo('App\Region');
+    }
+
+
+    /**
+     * Returns all location events.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function locations()
+    {
+        return $this->hasMany('App\Event');
+    }
 }

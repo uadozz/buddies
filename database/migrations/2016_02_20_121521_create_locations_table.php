@@ -15,7 +15,11 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->index();
-            $table->integer('region_id')->index();
+            $table->text('description');
+            $table->integer('region_id')->unsigned()->index();
+            // Lat, Long
+            //$table->decimal('latitude', 8, 6)->default(0.000000);
+            //$table->decimal('longitude', 8, 6)->default(0.000000);
             // TODO: Has many Activities
             $table->timestamps();
             

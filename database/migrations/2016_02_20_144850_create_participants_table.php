@@ -14,9 +14,19 @@ class CreateParticipantsTable extends Migration
     {
         Schema::create('participants', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->index();
-            $table->integer('event_id')->index();
+            $table->integer('user_id')->unsigned()->index();
+            $table->integer('event_id')->unsigned()->index();
             $table->timestamps();
+            
+            /*
+            $table->foreign('event_id')
+                  ->reference('id')
+                  ->on('events')
+                  ->onDelete('cascade'); // delete everything connected with an Event on Event delete.
+            $table->foreign('user_id')
+                  ->reference('id')
+                  ->on('users');
+             */
         });
     }
 

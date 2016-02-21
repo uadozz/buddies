@@ -17,6 +17,7 @@ class CreateActivitiesTable extends Migration
             $table->string('name', 128)->index();
             $table->text('description');
             $table->timestamps();
+            // Logo
             // TODO: has many Location
         });
     }

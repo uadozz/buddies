@@ -17,4 +17,13 @@ class Activity extends Model
     ];
     
     
+    /**
+     * Returns all locations of the activity.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function locations()
+    {
+        return $this->hasMany('App\Location');
+    }
 }

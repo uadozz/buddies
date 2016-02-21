@@ -34,6 +34,39 @@ class Event extends Model
     
     
     /**
+     * Returns event owner.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+    
+    
+    /**
+     * Returns event activity.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function activity()
+    {
+        return $this->belongsTo('App\Activity');
+    }
+    
+
+    /**
+     * Returns event location.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function location()
+    {
+        return $this->belongsTo('App\Location');
+    }
+    
+    
+    /**
      * Parses Event staring date.
      */
     public function setDateStartAttribute($date)

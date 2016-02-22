@@ -14,7 +14,8 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-		$this->composeNav();
+		// FIXME: Why it won't work?
+		//$this->composeNav();
     }
 
     /**

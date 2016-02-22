@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Activity;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Navigation Composer
+        view()->composer('layouts.app', function($view) {
+			$view->with('activities', Activity::orderBy('name', 'asc')->get());
+		});
     }
 
     /**

@@ -69,6 +69,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">Home</a></li>
+                    @if (!empty($activities))
                     <li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
 							Activities <span class="caret"></span>
@@ -79,6 +80,7 @@
 							@endforeach
 						</ul>
                     </li>
+                    @endif
                     <li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
 							Events <span class="caret"></span>

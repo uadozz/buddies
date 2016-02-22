@@ -34,5 +34,61 @@ class UserTableSeeder extends Seeder
             'created_at' => Carbon\Carbon::parse("now -1 month"),
             'updated_at' => Carbon\Carbon::parse("now -1 month"),
         ]);
+        
+        DB::table('users')->insert([
+            'name' => "John Wright",
+            'email' => 'wright@example.org',
+            'password' => bcrypt('123456'),
+            'created_at' => Carbon\Carbon::parse("now -1 month"),
+            'updated_at' => Carbon\Carbon::parse("now -1 month"),
+        ]);
+        
+        DB::table('users')->insert([
+            'name' => "Simon Jason",
+            'email' => 'jason@example.org',
+            'password' => bcrypt('123456'),
+            'created_at' => Carbon\Carbon::parse("now -1 month"),
+            'updated_at' => Carbon\Carbon::parse("now -1 month"),
+        ]);
+        
+        DB::table('users')->insert([
+            'name' => "Victor Diachko",
+            'email' => 'dweep@example.org',
+            'password' => bcrypt('123456'),
+            'created_at' => Carbon\Carbon::parse("now -1 month"),
+            'updated_at' => Carbon\Carbon::parse("now -1 month"),
+        ]);
+        
+        DB::table('users')->insert([
+            'name' => "Boris Johnson",
+            'email' => 'johnson@example.org',
+            'password' => bcrypt('123456'),
+            'created_at' => Carbon\Carbon::parse("now -1 month"),
+            'updated_at' => Carbon\Carbon::parse("now -1 month"),
+        ]);
+        
+        DB::table('users')->insert([
+            'name' => "Timothy Simon",
+            'email' => 'tim@example.org',
+            'password' => bcrypt('123456'),
+            'created_at' => Carbon\Carbon::parse("now -1 month"),
+            'updated_at' => Carbon\Carbon::parse("now -1 month"),
+        ]);
+        
+        DB::table('users')->insert([
+            'name' => "Jenny Jackson",
+            'email' => 'jackson@example.org',
+            'password' => bcrypt('123456'),
+            'created_at' => Carbon\Carbon::parse("now -1 month"),
+            'updated_at' => Carbon\Carbon::parse("now -1 month"),
+        ]);
+        
+        DB::table('users')->insert([
+            'name' => "Michael Trump",
+            'email' => 'trump@example.org',
+            'password' => bcrypt('123456'),
+            'created_at' => Carbon\Carbon::parse("now -1 month"),
+            'updated_at' => Carbon\Carbon::parse("now -1 month"),
+        ]);
     }
 }

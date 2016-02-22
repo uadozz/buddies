@@ -34,5 +34,14 @@ class LocationTableSeeder extends Seeder
             'created_at' => Carbon\Carbon::now(),
             'updated_at' => Carbon\Carbon::now(),
         ]);
+        
+		DB::table('locations')->insert([
+            'name' => 'Holosiiv Park',
+            'description' => 'Kyiv Holosiiv park walking track No. 2',
+            'region_id' => 1,
+            'created_at' => Carbon\Carbon::now(),
+            'updated_at' => Carbon\Carbon::now(),
+        ]);
+        
     }
 }

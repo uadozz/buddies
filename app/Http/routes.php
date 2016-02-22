@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +24,10 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
+
+	Route::get('/', function () {
+		return view('welcome');
+	});
 	
 	// Auto-login using demo account (For #Hackathon judges)
 	Route::get('/demo', function() {

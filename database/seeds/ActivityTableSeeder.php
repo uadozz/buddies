@@ -12,7 +12,7 @@ class ActivityTableSeeder extends Seeder
     public function run()
     {
 		DB::table('activities')->insert([
-            'name' => 'Basketball',
+            'name' => 'Swimming',
             'description' => 'Basketball',
             'created_at' => Carbon\Carbon::parse("now"),
             'updated_at' => Carbon\Carbon::parse("now"),

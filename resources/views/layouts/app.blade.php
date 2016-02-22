@@ -30,6 +30,19 @@
         .fa-btn {
             margin-right: 6px;
         }
+        
+		dl.inline dd {
+		  display: inline;
+		  margin: 0;
+		}
+		dl.inline dd:after{
+		  display: block;
+		  content: '';
+		}
+		dl.inline dt{
+		  display: inline-block;
+		  min-width: 120px;
+		}
     </style>
     @yield('head')
 </head>
@@ -58,12 +71,22 @@
                     <li><a href="{{ url('/') }}">Home</a></li>
                     <li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+							Activities <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							@foreach ($activities as $activity)
+								<li><a href="{{ route('activities.show', [$activity->id]) }}">{{ $activity->name }}</a></li>
+							@endforeach
+						</ul>
+                    </li>
+                    <li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
 							Events <span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="{{ route('events.index') }}">Events</a></li>
 							<li><a href="{{ route('events.create') }}">Create New</a></li>
-							@if (!empty($event->id))
+							@if (empty($events) && !empty($event->id))
 								<li><a href="{!! route('events.edit', $event->id) !!}">Edit</a></li>
 								<li><a class="danger" href="#" data-toggle="modal" data-target="#confirmModal">Delete</a></li>
 							@endif

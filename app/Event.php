@@ -78,6 +78,22 @@ class Event extends Model
     
     
     /**
+     * Checks if user is registered for the event as a participant.
+     * 
+     * @return boolean
+     */
+    public function hasParticipantUser($user_id)
+    {
+        foreach ($this->participants as $participant) {
+            if ($participant->user_id == $user_id)
+                return true;
+        }
+        // Default is false
+        return false;
+    }
+    
+    
+    /**
      * Parses Event staring date.
      */
     public function setDateStartAttribute($date)

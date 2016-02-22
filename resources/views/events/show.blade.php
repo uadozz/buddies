@@ -51,19 +51,81 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-8">
-        <dl class="col-sm-12 details inline">
-            <dt>Activity:</dt>
-            <dd>{{ $event->activity->name }}</dd>
-            <dt>Location:</dt>
-            <dd>{{ $event->location->name }}</dd>
-            <dt>Region:</dt>
-            <dd>{{ $event->location->region->name }}, {{ $event->location->region->country }}</dd>
-            <dt>Event starts:</dt>
-            <dd>{{ $event->date_start->format('d.m.Y H:i') }}</dd>
-            <dt>Event ends:</dt>
-            <dd>{{ $event->date_end->format('d.m.Y H:i') }}</dd>
-        </dl>
+		<div class="participation">
+			@if ($event->hasParticipantUser(Auth::user()->id))
+				{!! Form::open(['route' => ['events.unjoin', $event->id]]) !!}
+					<div class="form-group">
+						{!! Form::submit("Cancel participation", ['class' => 'btn btn-primary form-control']) !!}
+					</div>
+				{!! Form::close() !!}
+            @else
+				{!! Form::open(['route' => ['events.join', $event->id]]) !!}
+					<div class="form-group">
+						{!! Form::submit("Join", ['class' => 'btn btn-primary form-control']) !!}
+					</div>
+				{!! Form::close() !!}
+            @endif
+        </div>
+		<div class="row">
+			<dl class="col-sm-12 details inline">
+				<dt>Activity:</dt>
+				<dd>{{ $event->activity->name }}</dd>
+				<dt>Location:</dt>
+				<dd>{{ $event->location->name }}</dd>
+				<dt>Region:</dt>
+				<dd>{{ $event->location->region->name }}, {{ $event->location->region->country }}</dd>
+				<dt>Event starts:</dt>
+				<dd>{{ $event->date_start->format('d.m.Y H:i') }}</dd>
+				<dt>Event ends:</dt>
+				<dd>{{ $event->date_end->format('d.m.Y H:i') }}</dd>
+			</dl>
+        </div>
         {{-- social buttons go here --}}
     </div>
+
+    <div class="col-sm-12">
+		<h2>Event description</h2>
+        <div class="event-info">
+			{!! $event->description !!}
+        </div>
+	</div>
+	
+    <div class="col-sm-12">
+        <h2>Participants</h2>
+        <ul>
+            {{-- @foreach($event->participants()->with('user_id')->orderBy('user.name', 'asc')->get() as $participant) --}}
+            @foreach($event->participants()->get() as $participant)
+                <li>{{ $participant->user->name }}</li>
+            @endforeach
+        </ul>
+        
+        {{--
+        <table class="table table-condensed table-striped event-participants">
+            <thead>
+                <tr>
+                    <th>№ заявки</th>
+                    <th>Учасник</th>
+                    <th>Дата/час надходження заявки</th>
+                    <th>Стан заявки</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($lot->bidders()->with('user')->orderBy('created_at', 'asc')->get() as $bidder)
+                    <tr>
+                        <td>{{ $bidder->index }}</td>
+                        <td>
+                            @if(Auth::user() && Auth::user()->id === $bidder->user->id)
+                                {{ $bidder->user->name }}
+                            @else
+                                Учасник {{ $bidder->index }}
+                            @endif
+                        </td>
+                        <td>{{ $bidder->created_at->format('d.m.Y H:i') }}</td>
+                        <td>{{ $bidder_statuses[$bidder->status] }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        --}}
 </div>
 @stop

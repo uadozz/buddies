@@ -36,6 +36,10 @@ Route::group(['middleware' => ['web']], function () {
 	
     // Event resource
 	Route::resource('events', 'EventsController');
+    Route::post('/events/{events}/join', ['uses' => 'EventsController@join', 'as' => 'events.join']);
+    Route::post('/events/{events}/unjoin', ['uses' => 'EventsController@unjoin', 'as' => 'events.unjoin']);
+	
+	Route::get('/activities/{activities}', ['uses' => 'ActivitiesController@show', 'as' => 'activities.show']);
 });
 
 Route::group(['middleware' => 'web'], function () {

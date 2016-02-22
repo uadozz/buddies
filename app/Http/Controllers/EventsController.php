@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Event;
 use App\Location;
 use App\Activity;
+use App\Participant;
 use Auth;
 
 class EventsController extends Controller
@@ -117,5 +118,45 @@ class EventsController extends Controller
         $event->delete();
         
         return redirect(route('events.index'));
+    }
+    
+
+    /**
+     * Add current user to event participants.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Event  $event
+     * @return \Illuminate\Http\Response
+     */
+    public function join(Request $request, Event $event)
+    {
+        // Create new participation (Participant object)
+        //$request->user()->participations()->create($request->all());
+        $participant = new \App\Participant($request->all());
+        // Attach current event to a Participant object
+        $participant->event_id = $event->id;
+        // Persist created Participant object
+        $request->user()->participations()->save($participant);
+
+        return redirect(route('events.show', [$event->id]));
+    }
+    
+    
+    /**
+     * Removes current user from event participants.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Event  $event
+     * @return \Illuminate\Http\Response
+     */
+    public function unjoin(Request $request, Event $event)
+    {
+        $participant = \App\Participant::where('user_id', $request->user()->id)
+									  ->where('event_id', $event->id)
+									  ->firstOrFail();
+
+		$participant->delete();
+
+        return redirect(route('events.show', [$event->id]));
     }
 }
